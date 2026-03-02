@@ -33,4 +33,4 @@ def update_status(sheet_id, row, col, status):
     sheet.sheet1.update_cell(row, col, status)
 
 
-print(get_raw_data(get_sheet_vals(sheet_id)))
+
