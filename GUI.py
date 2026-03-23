@@ -247,6 +247,8 @@ class Ui_MainWindow(object):
 
     def login(self):
         if self.UsernameE.text() == "test" and self.PasswordE.text() == "1234":
+            self.LogError.setText("")
+            self.update()
             self.Scereens.setCurrentIndex(2)
             self.pending()
         else:
