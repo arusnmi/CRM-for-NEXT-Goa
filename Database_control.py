@@ -22,6 +22,7 @@ def get_sheet_vals(sheet_id):
 
 
 def get_raw_data(value):
+    value=get_sheet_vals(sheet_id)
     VALS=[]
     for i in range(len(value)):
         mapvals= map(value[i].get, value[i])
