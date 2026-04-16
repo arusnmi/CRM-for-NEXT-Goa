@@ -12,8 +12,34 @@ import os
 import subprocess
 import sys
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-import Database_control
+
+def install_requirements():
+    packages = [
+        "PyQt5",
+        "gspread",
+        "google-api-python-client",
+        "google-auth-httplib2",
+        "google-auth-oauthlib",
+    ]
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install"] + packages)
+    except subprocess.CalledProcessError as exc:
+        print(f"Failed to install required packages: {exc}")
+    except Exception as exc:
+        print(f"Error installing required packages: {exc}")
+
+
+try:
+    from PyQt5 import QtCore, QtGui, QtWidgets
+except ModuleNotFoundError:
+    install_requirements()
+    from PyQt5 import QtCore, QtGui, QtWidgets
+
+try:
+    import Database_control
+except ModuleNotFoundError:
+    install_requirements()
+    import Database_control
 
 
 global values, status
@@ -628,7 +654,7 @@ class Ui_MainWindow(object):
 
 def install_requirements():
     packages = [
-        "PyQt5",
+        "pyqt5",
         "gspread",
         "google-api-python-client",
         "google-auth-httplib2",
